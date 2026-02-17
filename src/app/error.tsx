@@ -14,14 +14,14 @@ export default function Error({
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-20rem)] text-center fade-in">
       <Terminal className="h-16 w-16 text-destructive mb-4" />
-      <h1 className="text-4xl font-headline font-bold mb-2">404 - Code Not Found</h1>
+      <h1 className="text-4xl font-headline font-bold mb-2">404 - Código Não Encontrado</h1>
       <p className="text-muted-foreground mb-6 max-w-md">
-        Oops! Looks like this page has a syntax error or doesn't exist. Let's get you back on track.
+        Opa! Parece que esta página tem um erro de sintaxe ou não existe. Vamos te colocar de volta nos trilhos.
       </p>
       <div className="flex gap-4">
-        <Button onClick={() => reset()}>Try Again</Button>
+        <Button onClick={() => reset()}>Tentar Novamente</Button>
         <Link href="/">
-          <Button variant="outline">Go Home</Button>
+          <Button variant="outline">Ir para o Início</Button>
         </Link>
       </div>
     </div>

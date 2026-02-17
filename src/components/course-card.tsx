@@ -24,13 +24,13 @@ export function CourseCard({ course }: CourseCardProps) {
       <CardContent className="flex-grow">
         <div className="flex items-center text-sm text-muted-foreground">
           <BookOpen className="h-4 w-4 mr-2" />
-          <span>{course.files.length} material(s)</span>
+          <span>{course.files.length} {course.files.length === 1 ? 'material' : 'materiais'}</span>
         </div>
       </CardContent>
       <CardFooter>
         <Link href="/courses" className="w-full">
           <Button variant="outline" className="w-full group">
-            View Course
+            Ver Curso
             <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </Link>

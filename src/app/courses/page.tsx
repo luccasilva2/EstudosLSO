@@ -22,14 +22,14 @@ export default function CoursesPage() {
   return (
     <div className="fade-in space-y-8">
       <header>
-        <h1 className="text-4xl font-bold font-headline">Course Catalog</h1>
-        <p className="text-muted-foreground mt-2">All my study materials in one place.</p>
+        <h1 className="text-4xl font-bold font-headline">Catálogo de Cursos</h1>
+        <p className="text-muted-foreground mt-2">Todos os meus materiais de estudo em um só lugar.</p>
       </header>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="ifc">IFC Courses</TabsTrigger>
-          <TabsTrigger value="mec">MEC Courses</TabsTrigger>
+          <TabsTrigger value="ifc">Cursos IFC</TabsTrigger>
+          <TabsTrigger value="mec">Cursos MEC</TabsTrigger>
         </TabsList>
         <TabsContent value="ifc">
           <div className="space-y-4 mt-4">
@@ -41,7 +41,7 @@ export default function CoursesPage() {
                 </CardHeader>
                 <Accordion type="single" collapsible className="w-full px-6 pb-4">
                   <AccordionItem value="item-1">
-                    <AccordionTrigger>View Materials</AccordionTrigger>
+                    <AccordionTrigger>Ver Materiais</AccordionTrigger>
                     <AccordionContent>
                       <ul className="space-y-3 pt-2">
                         {course.files.map((file, index) => (
@@ -70,7 +70,7 @@ export default function CoursesPage() {
                 </CardHeader>
                 <Accordion type="single" collapsible className="w-full px-6 pb-4">
                   <AccordionItem value="item-1">
-                    <AccordionTrigger>View Materials</AccordionTrigger>
+                    <AccordionTrigger>Ver Materiais</AccordionTrigger>
                     <AccordionContent>
                       <ul className="space-y-3 pt-2">
                         {course.files.map((file, index) => (

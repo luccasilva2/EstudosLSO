@@ -16,23 +16,23 @@ export default function Home() {
           </span>
         </h1>
         <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-          Lucca, an aspiring developer, organizing and documenting studies in IFC & MEC EAD courses.
+          Lucca, um desenvolvedor aspirante, organizando e documentando estudos nos cursos EAD do IFC & MEC.
         </p>
         <div className="mt-8 flex justify-center gap-4">
           <Link href="/courses">
             <Button>
-              Explore Courses
+              Explorar Cursos
               <ArrowRight className="h-4 w-4 ml-2" />
             </Button>
           </Link>
           <Link href="/about">
-            <Button variant="outline">About Me</Button>
+            <Button variant="outline">Sobre Mim</Button>
           </Link>
         </div>
       </section>
 
       <section>
-        <h2 className="text-3xl font-bold font-headline text-center mb-8">Featured Courses</h2>
+        <h2 className="text-3xl font-bold font-headline text-center mb-8">Cursos em Destaque</h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featuredCourses.map((course) => (
             <CourseCard key={course.id} course={course} />

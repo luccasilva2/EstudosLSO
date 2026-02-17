@@ -36,28 +36,28 @@ export default function AboutPage() {
   return (
     <div className="fade-in space-y-12">
       <header className="text-center">
-        <h1 className="text-4xl font-bold font-headline">About Me</h1>
-        <p className="text-muted-foreground mt-2">The developer behind the screen.</p>
+        <h1 className="text-4xl font-bold font-headline">Sobre Mim</h1>
+        <p className="text-muted-foreground mt-2">O desenvolvedor por trás da tela.</p>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <Card className="lg:col-span-2 bg-card/50">
           <CardHeader>
-            <CardTitle className="font-headline">Lucca - Aspiring Developer</CardTitle>
+            <CardTitle className="font-headline">Lucca - Desenvolvedor Aspirante</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4 text-muted-foreground">
             <p>
-              Hello! I'm Lucca, a programming enthusiast with a passion for building clean, efficient, and visually appealing web applications. This website, StudyForge, is a personal project I created to organize my study materials from online courses.
+              Olá! Sou Lucca, um entusiasta da programação com paixão por construir aplicações web limpas, eficientes e visualmente atraentes. Este site, StudyForge, é um projeto pessoal que criei para organizar meus materiais de estudo de cursos online.
             </p>
             <p>
-              My journey into programming started with a curiosity for how things work, and it has since grown into a full-fledged passion for web development. I enjoy tackling challenges, learning new technologies, and bringing ideas to life through code. This project is a testament to that, built with some of my favorite tools.
+              Minha jornada na programação começou com a curiosidade de como as coisas funcionam e, desde então, tornou-se uma paixão total pelo desenvolvimento web. Gosto de enfrentar desafios, aprender novas tecnologias e dar vida a ideias através do código. Este projeto é uma prova disso, construído com algumas das minhas ferramentas favoritas.
             </p>
           </CardContent>
         </Card>
         
         <Card className="bg-card/50">
           <CardHeader>
-            <CardTitle className="font-headline">Skills & Tech</CardTitle>
+            <CardTitle className="font-headline">Habilidades & Tecnologias</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-2">
@@ -71,7 +71,7 @@ export default function AboutPage() {
 
       <Card className="bg-card/50">
         <CardHeader>
-          <CardTitle className="font-headline">A Glimpse into the Code</CardTitle>
+          <CardTitle className="font-headline">Uma Olhada no Código</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="bg-background/50 p-4 rounded-lg">

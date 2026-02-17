@@ -61,7 +61,7 @@ export function Search() {
           <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             type="search"
-            placeholder="Search files..."
+            placeholder="Buscar arquivos..."
             className="w-full pl-9"
             value={query}
             onChange={handleInputChange}
@@ -70,7 +70,7 @@ export function Search() {
       </PopoverTrigger>
       <PopoverContent className="w-80 p-0">
         <div className="p-4 text-sm font-medium border-b">
-          Found {results.length} {results.length === 1 ? 'result' : 'results'}.
+          Encontrado {results.length} {results.length === 1 ? 'resultado' : 'resultados'}.
         </div>
         <div className="max-h-80 overflow-y-auto">
           {results.map(({ file, course }, index) => (

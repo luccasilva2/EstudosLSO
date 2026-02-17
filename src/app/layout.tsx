@@ -11,8 +11,8 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space
 const robotoMono = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' });
 
 export const metadata: Metadata = {
-  title: 'StudyForge | Your Personal Study Hub',
-  description: 'Organize and access your study materials from IFC and MEC courses.',
+  title: 'StudyForge | Seu Hub de Estudos Pessoal',
+  description: 'Organize e acesse seus materiais de estudo dos cursos do IFC e MEC.',
 };
 
 export default function RootLayout({
@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />

@@ -11,9 +11,9 @@ import { Search } from "@/components/search";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/courses", label: "Courses" },
-  { href: "/about", label: "About" },
+  { href: "/", label: "Início" },
+  { href: "/courses", label: "Cursos" },
+  { href: "/about", label: "Sobre" },
 ];
 
 export function Header() {
@@ -54,7 +54,7 @@ export function Header() {
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
                 <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle Menu</span>
+                <span className="sr-only">Alternar Menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="pr-0">
