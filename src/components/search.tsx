@@ -7,6 +7,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { courses } from "@/lib/data";
 import type { CourseFile, Course } from "@/lib/types";
 import { FileIcon } from "./file-icon";
+import { useLanguage } from "@/components/language-provider";
+import { t } from "@/lib/i18n";
 
 interface SearchResult {
   file: CourseFile;
@@ -14,6 +16,7 @@ interface SearchResult {
 }
 
 export function Search() {
+  const { lang } = useLanguage();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -61,7 +64,7 @@ export function Search() {
           <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             type="search"
-            placeholder="Buscar arquivos..."
+            placeholder={lang === "pt" ? "Buscar arquivos..." : "Search files..."}
             className="w-full pl-9"
             value={query}
             onChange={handleInputChange}
@@ -70,7 +73,9 @@ export function Search() {
       </PopoverTrigger>
       <PopoverContent className="w-80 p-0">
         <div className="p-4 text-sm font-medium border-b">
-          Encontrado {results.length} {results.length === 1 ? 'resultado' : 'resultados'}.
+          {lang === "pt"
+            ? `Encontrado ${results.length} ${results.length === 1 ? "resultado" : "resultados"}.`
+            : `Found ${results.length} ${results.length === 1 ? "result" : "results"}.`}
         </div>
         <div className="max-h-80 overflow-y-auto">
           {results.map(({ file, course }, index) => (
@@ -79,7 +84,7 @@ export function Search() {
                 <FileIcon type={file.type} className="h-5 w-5 text-muted-foreground" />
                 <div className="flex-1">
                   <p className="font-medium">{file.name}</p>
-                  <p className="text-xs text-muted-foreground">{course.title}</p>
+                  <p className="text-xs text-muted-foreground">{t(course.title, lang)}</p>
                 </div>
               </div>
             </div>

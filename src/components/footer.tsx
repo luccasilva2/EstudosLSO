@@ -1,7 +1,11 @@
+"use client";
+
 import { Code, Github, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "@/components/language-provider";
 
 export function Footer() {
+  const { lang } = useLanguage();
   const year = new Date().getFullYear();
 
   return (
@@ -10,7 +14,9 @@ export function Footer() {
         <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
           <Code className="h-6 w-6 text-primary hidden md:block" />
           <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-            Construído por um desenvolvedor aspirante. &copy; {year} EstudosLSO. Todos os direitos reservados.
+            {lang === "pt"
+              ? `Construido por um desenvolvedor aspirante. © ${year} EstudosLSO. Todos os direitos reservados.`
+              : `Built by an aspiring developer. © ${year} EstudosLSO. All rights reserved.`}
           </p>
         </div>
         <div className="flex items-center space-x-4">

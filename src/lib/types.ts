@@ -1,4 +1,6 @@
-export type FileType = 'pdf' | 'video' | 'link' | 'notes';
+import type { LocalizedText } from "./i18n";
+
+export type FileType = "pdf" | "video" | "link" | "notes" | "docx";
 
 export interface CourseFile {
   name: string;
@@ -8,8 +10,8 @@ export interface CourseFile {
 
 export interface Course {
   id: string;
-  title: string;
-  description: string;
-  source: 'IFC' | 'MEC';
+  title: LocalizedText;
+  description: LocalizedText;
+  source: "IFC" | "MEC";
   files: CourseFile[];
 }

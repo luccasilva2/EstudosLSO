@@ -1,4 +1,4 @@
-import { FileText, Video, Link as LinkIcon, NotebookText, LucideProps } from "lucide-react";
+import { FileBadge2, FileText, Video, Link as LinkIcon, NotebookText, LucideProps } from "lucide-react";
 import type { FileType } from "@/lib/types";
 
 interface FileIconProps extends LucideProps {
@@ -15,6 +15,8 @@ export function FileIcon({ type, ...props }: FileIconProps) {
       return <LinkIcon {...props} />;
     case 'notes':
       return <NotebookText {...props} />;
+    case "docx":
+      return <FileBadge2 {...props} />;
     default:
       return <FileText {...props} />;
   }

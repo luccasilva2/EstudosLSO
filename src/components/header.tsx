@@ -8,16 +8,20 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Search } from "@/components/search";
+import { LanguageSwitcher } from "@/components/language-switcher";
+import { useLanguage } from "@/components/language-provider";
 import { cn } from "@/lib/utils";
-
-const navLinks = [
-  { href: "/", label: "Início" },
-  { href: "/courses", label: "Cursos" },
-  { href: "/about", label: "Sobre" },
-];
 
 export function Header() {
   const pathname = usePathname();
+  const { lang } = useLanguage();
+
+  const navLinks = [
+    { href: "/", label: lang === "pt" ? "Inicio" : "Home" },
+    { href: "/courses", label: lang === "pt" ? "Cursos" : "Courses" },
+    { href: "/certificates", label: lang === "pt" ? "Certificados" : "Certificates" },
+    { href: "/about", label: lang === "pt" ? "Sobre" : "About" },
+  ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -49,12 +53,13 @@ export function Header() {
           <div className="w-full flex-1 md:w-auto md:flex-none">
             <Search />
           </div>
+          <LanguageSwitcher />
           <ThemeToggle />
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
                 <Menu className="h-5 w-5" />
-                <span className="sr-only">Alternar Menu</span>
+                <span className="sr-only">{lang === "pt" ? "Alternar menu" : "Toggle menu"}</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="pr-0">

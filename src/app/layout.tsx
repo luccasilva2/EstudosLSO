@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Toaster } from '@/components/ui/toaster';
+import { LanguageProvider } from '@/components/language-provider';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk' });
@@ -13,6 +14,11 @@ const robotoMono = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mo
 export const metadata: Metadata = {
   title: 'EstudosLSO | Seu Hub de Estudos Pessoal',
   description: 'Organize e acesse seus materiais de estudo dos cursos do IFC e MEC.',
+  icons: {
+    icon: 'src/app/favicon.ico',
+    shortcut: 'src/app/favicon.ico',
+    apple: 'src/app/favicon.ico',
+  },
 };
 
 export default function RootLayout({
@@ -32,13 +38,15 @@ export default function RootLayout({
           defaultTheme="dark"
           storageKey="estudoslso-theme"
         >
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-grow container px-4 py-8 md:px-6 md:py-12">
-              {children}
-            </main>
-            <Footer />
-          </div>
+          <LanguageProvider>
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-grow container px-4 py-8 md:px-6 md:py-12">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </LanguageProvider>
           <Toaster />
         </ThemeProvider>
       </body>
