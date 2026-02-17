@@ -12,7 +12,7 @@ export default function Home() {
       <section className="text-center py-16 md:py-24">
         <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter">
           <span className="bg-gradient-to-br from-primary via-orange-400 to-accent bg-clip-text text-transparent">
-            StudyForge
+            EstudosLSO
           </span>
         </h1>
         <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">

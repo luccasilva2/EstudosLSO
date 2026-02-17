@@ -47,7 +47,7 @@ export default function AboutPage() {
           </CardHeader>
           <CardContent className="space-y-4 text-muted-foreground">
             <p>
-              Olá! Sou Lucca, um entusiasta da programação com paixão por construir aplicações web limpas, eficientes e visualmente atraentes. Este site, StudyForge, é um projeto pessoal que criei para organizar meus materiais de estudo de cursos online.
+              Olá! Sou Lucca, um entusiasta da programação com paixão por construir aplicações web limpas, eficientes e visualmente atraentes. Este site, EstudosLSO, é um projeto pessoal que criei para organizar meus materiais de estudo de cursos online.
             </p>
             <p>
               Minha jornada na programação começou com a curiosidade de como as coisas funcionam e, desde então, tornou-se uma paixão total pelo desenvolvimento web. Gosto de enfrentar desafios, aprender novas tecnologias e dar vida a ideias através do código. Este projeto é uma prova disso, construído com algumas das minhas ferramentas favoritas.

@@ -11,7 +11,7 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space
 const robotoMono = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' });
 
 export const metadata: Metadata = {
-  title: 'StudyForge | Seu Hub de Estudos Pessoal',
+  title: 'EstudosLSO | Seu Hub de Estudos Pessoal',
   description: 'Organize e acesse seus materiais de estudo dos cursos do IFC e MEC.',
 };
 
@@ -30,7 +30,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${spaceGrotesk.variable} ${robotoMono.variable} font-body antialiased`}>
         <ThemeProvider
           defaultTheme="dark"
-          storageKey="studyforge-theme"
+          storageKey="estudoslso-theme"
         >
           <div className="flex flex-col min-h-screen">
             <Header />
