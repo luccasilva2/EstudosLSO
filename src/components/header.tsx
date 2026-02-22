@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Code, Menu } from "lucide-react";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -15,6 +16,7 @@ import { cn } from "@/lib/utils";
 export function Header() {
   const pathname = usePathname();
   const { lang } = useLanguage();
+  const [scrolled, setScrolled] = useState(false);
 
   const navLinks = [
     { href: "/", label: lang === "pt" ? "Inicio" : "Home" },
@@ -23,28 +25,42 @@ export function Header() {
     { href: "/about", label: lang === "pt" ? "Sobre" : "About" },
   ];
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center">
-        <div className="mr-4 hidden md:flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
+    <header
+      className={cn(
+        "sticky top-0 z-50 w-full transition-all duration-300",
+        scrolled
+          ? "border-b border-border/60 bg-background/80 shadow-md backdrop-blur-md"
+          : "bg-transparent"
+      )}
+    >
+      <div className="container flex h-20 items-center justify-between">
+        <div className="mr-4 hidden items-center md:flex">
+          <Link href="/" className="mr-8 flex items-center space-x-2">
             <Code className="h-6 w-6 text-primary" />
-            <span className="hidden font-bold sm:inline-block font-headline">
+            <span className="hidden font-headline text-lg font-extrabold sm:inline-block">
               EstudosLSO
             </span>
           </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
+          <nav className="flex items-center space-x-2">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "transition-colors hover:text-primary",
-                  pathname === link.href ? "text-primary" : "text-muted-foreground"
-                )}
-              >
-                {link.label}
-              </Link>
+              <Button key={link.href} variant="ghost" asChild>
+                <Link
+                  href={link.href}
+                  className={cn(
+                    "transition-colors",
+                    pathname === link.href ? "text-primary" : "text-muted-foreground"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              </Button>
             ))}
           </nav>
         </div>
@@ -62,19 +78,19 @@ export function Header() {
                 <span className="sr-only">{lang === "pt" ? "Alternar menu" : "Toggle menu"}</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="pr-0">
-              <Link href="/" className="mr-6 flex items-center space-x-2">
+            <SheetContent side="left" className="border-border/60 bg-background/90 pr-0 backdrop-blur-md">
+              <Link href="/" className="mr-6 flex items-center space-x-2 px-6">
                 <Code className="h-6 w-6 text-primary" />
                 <span className="font-bold font-headline">EstudosLSO</span>
               </Link>
-              <div className="flex flex-col space-y-3 pt-6">
+              <div className="flex flex-col space-y-3 px-4 pt-6">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     className={cn(
-                      "transition-colors hover:text-primary p-2 rounded-md",
-                      pathname === link.href ? "text-primary bg-muted" : "text-foreground"
+                      "rounded-md p-2 text-lg transition-colors hover:text-primary",
+                      pathname === link.href ? "bg-muted text-primary" : "text-foreground"
                     )}
                   >
                     {link.label}

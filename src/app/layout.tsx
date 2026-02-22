@@ -1,19 +1,20 @@
 import type { Metadata } from 'next';
-import { Inter, Space_Grotesk, Roboto_Mono } from 'next/font/google';
+import { Inter, Poppins, Roboto_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Toaster } from '@/components/ui/toaster';
 import { LanguageProvider } from '@/components/language-provider';
+import { GlobalBackground } from '@/components/three/global-background';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk' });
+const poppins = Poppins({ subsets: ['latin'], variable: '--font-poppins', weight: ['600', '700', '800'] });
 const robotoMono = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' });
 
 export const metadata: Metadata = {
   title: 'EstudosLSO | Seu Hub de Estudos Pessoal',
-  description: 'Organize e acesse seus materiais de estudo dos cursos do IFC e MEC.',
+  description: 'Organize e acesse seus materiais de estudo dos cursos EAD de alto valor.',
   icons: {
     icon: 'src/app/favicon.ico',
     shortcut: 'src/app/favicon.ico',
@@ -28,20 +29,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
-      </head>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} ${robotoMono.variable} font-body antialiased`}>
+      <body className={`${inter.variable} ${poppins.variable} ${robotoMono.variable} font-body antialiased`}>
         <ThemeProvider
           defaultTheme="dark"
           storageKey="estudoslso-theme"
         >
           <LanguageProvider>
-            <div className="flex flex-col min-h-screen">
+            <GlobalBackground />
+            <div className="relative z-10 flex min-h-screen flex-col">
               <Header />
-              <main className="flex-grow container px-4 py-8 md:px-6 md:py-12">
+              <main className="container flex-grow px-4 py-10 md:px-6 md:py-14">
                 {children}
               </main>
               <Footer />

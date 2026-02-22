@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -22,79 +23,114 @@ export default function CoursesPage() {
   const ifcCourses = courses.filter((c) => c.source === "IFC");
   const mecCourses = courses.filter((c) => c.source === "MEC");
 
+  const sectionTitle = lang === "pt" ? "Catálogo de cursos" : "Course catalog";
+
   return (
-    <div className="fade-in space-y-8">
-      <header>
-        <h1 className="text-4xl font-bold font-headline">
-          {lang === "pt" ? "Catalogo de cursos" : "Course catalog"}
+    <div className="space-y-10">
+      <motion.header
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="font-headline text-4xl font-extrabold tracking-tight md:text-5xl">
+          <span className="text-gradient">{sectionTitle.split(" ")[0]}</span> {sectionTitle.split(" ").slice(1).join(" ")}
         </h1>
-        <p className="text-muted-foreground mt-2">
+        <p className="mt-3 max-w-2xl text-muted-foreground">
           {lang === "pt"
-            ? "Todos os meus materiais de estudo em um so lugar."
-            : "All my study resources in one place."}
+            ? "Todos os meus materiais de estudo em um lugar único, organizados por origem e curso."
+            : "All my study resources in one place, organized by source and course."}
         </p>
-      </header>
+      </motion.header>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-2">
+        <TabsList className="grid w-full grid-cols-2 border border-border/70 bg-card/60 backdrop-blur">
           <TabsTrigger value="ifc">{lang === "pt" ? "Cursos IFC" : "IFC Courses"}</TabsTrigger>
           <TabsTrigger value="mec">{lang === "pt" ? "Cursos MEC" : "MEC Courses"}</TabsTrigger>
         </TabsList>
-        <TabsContent value="ifc">
-          <div className="space-y-4 mt-4">
-            {ifcCourses.map((course) => (
-              <Card key={course.id} className="bg-card/50">
-                <CardHeader>
-                  <CardTitle className="font-headline">{t(course.title, lang)}</CardTitle>
-                  <CardDescription>{t(course.description, lang)}</CardDescription>
-                </CardHeader>
-                <Accordion type="single" collapsible className="w-full px-6 pb-4">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>{lang === "pt" ? "Ver materiais" : "View resources"}</AccordionTrigger>
-                    <AccordionContent>
-                      <ul className="space-y-3 pt-2">
-                        {course.files.map((file, index) => (
-                          <li key={index}>
-                            <Link href={file.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-2 rounded-md hover:bg-muted transition-colors group">
-                              <FileIcon type={file.type} className="h-5 w-5 text-primary" />
-                              <span className="flex-1 group-hover:text-primary transition-colors">{file.name}</span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </Card>
+
+        <TabsContent value="ifc" className="mt-5">
+          <div className="space-y-5">
+            {ifcCourses.map((course, index) => (
+              <motion.div
+                key={course.id}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.45, delay: index * 0.05 }}
+              >
+                <Card className="shine-card border-primary/20 bg-card/70 backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
+                  <CardHeader>
+                    <CardTitle className="font-headline text-xl">{t(course.title, lang)}</CardTitle>
+                    <CardDescription>{t(course.description, lang)}</CardDescription>
+                  </CardHeader>
+                  <Accordion type="single" collapsible className="w-full px-6 pb-4">
+                    <AccordionItem value="resources">
+                      <AccordionTrigger>{lang === "pt" ? "Ver materiais" : "View resources"}</AccordionTrigger>
+                      <AccordionContent>
+                        <ul className="space-y-3 pt-2">
+                          {course.files.map((file, fileIndex) => (
+                            <li key={fileIndex}>
+                              <Link
+                                href={file.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group flex items-center gap-3 rounded-md p-2 transition-colors hover:bg-muted"
+                              >
+                                <FileIcon type={file.type} className="h-5 w-5 text-primary" />
+                                <span className="flex-1 transition-colors group-hover:text-primary">{file.name}</span>
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </TabsContent>
-        <TabsContent value="mec">
-          <div className="space-y-4 mt-4">
-            {mecCourses.map((course) => (
-               <Card key={course.id} className="bg-card/50">
-                <CardHeader>
-                  <CardTitle className="font-headline">{t(course.title, lang)}</CardTitle>
-                  <CardDescription>{t(course.description, lang)}</CardDescription>
-                </CardHeader>
-                <Accordion type="single" collapsible className="w-full px-6 pb-4">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>{lang === "pt" ? "Ver materiais" : "View resources"}</AccordionTrigger>
-                    <AccordionContent>
-                      <ul className="space-y-3 pt-2">
-                        {course.files.map((file, index) => (
-                          <li key={index}>
-                            <Link href={file.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-2 rounded-md hover:bg-muted transition-colors group">
-                              <FileIcon type={file.type} className="h-5 w-5 text-primary" />
-                              <span className="flex-1 group-hover:text-primary transition-colors">{file.name}</span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </Card>
+
+        <TabsContent value="mec" className="mt-5">
+          <div className="space-y-5">
+            {mecCourses.map((course, index) => (
+              <motion.div
+                key={course.id}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.45, delay: index * 0.05 }}
+              >
+                <Card className="shine-card border-primary/20 bg-card/70 backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
+                  <CardHeader>
+                    <CardTitle className="font-headline text-xl">{t(course.title, lang)}</CardTitle>
+                    <CardDescription>{t(course.description, lang)}</CardDescription>
+                  </CardHeader>
+                  <Accordion type="single" collapsible className="w-full px-6 pb-4">
+                    <AccordionItem value="resources">
+                      <AccordionTrigger>{lang === "pt" ? "Ver materiais" : "View resources"}</AccordionTrigger>
+                      <AccordionContent>
+                        <ul className="space-y-3 pt-2">
+                          {course.files.map((file, fileIndex) => (
+                            <li key={fileIndex}>
+                              <Link
+                                href={file.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group flex items-center gap-3 rounded-md p-2 transition-colors hover:bg-muted"
+                              >
+                                <FileIcon type={file.type} className="h-5 w-5 text-primary" />
+                                <span className="flex-1 transition-colors group-hover:text-primary">{file.name}</span>
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </TabsContent>
