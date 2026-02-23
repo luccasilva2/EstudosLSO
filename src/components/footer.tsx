@@ -1,6 +1,6 @@
 "use client";
 
-import { Code, Github, Linkedin, Twitter } from "lucide-react";
+import { Code, Github, Linkedin, Instagram } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/components/language-provider";
 
@@ -20,14 +20,14 @@ export function Footer() {
           </p>
         </div>
         <div className="flex items-center space-x-4">
-          <Link href="#" target="_blank" rel="noreferrer">
+          <Link href="https://github.com/luccasilva2" target="_blank" rel="noreferrer">
             <Github className="h-5 w-5 text-muted-foreground transition-colors hover:text-primary" />
           </Link>
-          <Link href="#" target="_blank" rel="noreferrer">
+          <Link href="https://www.linkedin.com/in/lucca-silva-oliveira/" target="_blank" rel="noreferrer">
             <Linkedin className="h-5 w-5 text-muted-foreground transition-colors hover:text-primary" />
           </Link>
-          <Link href="#" target="_blank" rel="noreferrer">
-            <Twitter className="h-5 w-5 text-muted-foreground transition-colors hover:text-primary" />
+          <Link href="https://www.instagram.com/luccaa_so/" target="_blank" rel="noreferrer">
+            <Instagram className="h-5 w-5 text-muted-foreground transition-colors hover:text-primary" />
           </Link>
         </div>
       </div>
